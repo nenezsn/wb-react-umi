@@ -13,6 +13,7 @@ function Index({foo,dispatch}) {
         }
       })
     }
+    console.log('process.env.TEST',process.env.TEST)
   return (
     <div className={styles.normal}>
       <Com/>
