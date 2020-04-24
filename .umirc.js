@@ -28,6 +28,7 @@ export default {
   },
   define: {
     "process.env.TEST": 1,
-    "USE_COMMA": 2,
-  }
+    "process.env.apiUrl": 2,
+  },
+  theme: "./theme.js"
 }

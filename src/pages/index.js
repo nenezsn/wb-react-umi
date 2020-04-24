@@ -2,6 +2,7 @@ import Link from 'umi/link';
 import styles from './index.css';
 import { connect } from 'dva'
 import Com from '@/components'
+import { Button } from 'antd'
 
 function Index({foo,dispatch}) {
     function update(){
@@ -17,6 +18,7 @@ function Index({foo,dispatch}) {
       <Com/>
       <h1 onClick={update}>Page index</h1>
      <Link to="/user">go to /users</Link>
+     <Button type='primary'>你好</Button>
     </div>
   );
 }
