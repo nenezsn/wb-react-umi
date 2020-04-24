@@ -2,6 +2,10 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  chainWebpack(config, { webpack }) {
+    // 删除进度条插件
+    config.plugins.delete('progress');
+  },
   // history: 'hash',
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
