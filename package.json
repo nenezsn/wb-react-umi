@@ -5,11 +5,14 @@
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",
+    "build-prod": "node pbu-build.js preBuild &&cross-env UMI_ENV=prod umi build",
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "ali-oss": "^6.8.0",
     "antd": "^3.19.5",
     "axios": "^0.19.2",
+    "co": "^4.6.0",
     "dva": "^2.6.0-beta.6",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
@@ -20,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "cross-env": "^7.0.2",
     "eslint": "^5.4.0",
     "eslint-config-umi": "^1.4.0",
     "eslint-plugin-flowtype": "^2.50.0",

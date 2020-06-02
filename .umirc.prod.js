@@ -1,6 +1,1 @@
-export default{
-  define: {
-    "process.env.TEST": 6,
-    "process.env.apiUrl": 6,
-  }
-}
+export default{publicPath:"https://pbu-public.oss-cn-beijing.aliyuncs.com/webapps/umi-myapp/1591077327519/dist/"}
