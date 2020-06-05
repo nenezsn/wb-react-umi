@@ -1,13 +1,11 @@
-import styles from './index.less';
-import { connect } from 'dva'
-
-function BasicLayout(props) {
-  return (
-    <div className={styles.normal}>
-      <div>1111</div>
-      {props.children}
-    </div>
-  );
+import React from 'react';
+function Container({ location,children }) {
+  if(location.pathname.split('/')[1] == 'file'){
+    return children
+  }
+  return <div>
+    <h1>首页</h1>
+    <div>{children}</div>
+  </div>
 }
-
-export default connect()(BasicLayout);
+export default Container

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { useSelector } from 'react-redux'
+import { Button } from 'antd'
+import router from 'umi/router'
 
-class doc extends Component {
-  render() {
-    console.log('222',this.props.match)
-    return (
-      <div>
-111
-      </div>
-    );
+function Fileinfo({ match }) {
+  const fileState = useSelector(state => state.file)
+  function renderContent(id) {
+    const result = fileState.lists.find(item => item.id == id) || {}
+    return <div>{result.info}</div>
   }
+  return (
+    <div>
+      <Button onClick={()=>{router.goBack()}}>返回</Button>
+      {renderContent(match.params.id)}
+    </div>
+  );
 }
 
-export default doc;
+export default Fileinfo;

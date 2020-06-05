@@ -2,8 +2,9 @@
 import { getuserInfo } from '../services'
 export default {
   state: {
-    a: 1,
-    b: 2
+    name:'',
+    age:'',
+    count: 0
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -18,11 +19,28 @@ export default {
         ...action.payload
       }
     },
+    ADD(state, action) {
+      return {
+        ...state,
+        count: state.count + 1
+      }
+    },
+    SUB(state, action) {
+      return {
+        ...state,
+        count: state.count - 1
+      }
+    }
   },
   effects: {
-    *fetch({ type, payload }, { put, call, select }) {
+    *fetchUser({ type, payload }, { put, call, select }) {
       const data = yield call(getuserInfo)
-      console.log('data', data)
+      yield put({
+        type:'update',
+        payload:{
+         ...data
+        }
+      })
     },
   },
 }

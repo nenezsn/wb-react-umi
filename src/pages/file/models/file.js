@@ -1,8 +1,7 @@
 
 export default {
   state: {
-    a:1,
-    b:2
+    lists:[{id:1,info:'新闻1'},{id:2,info:'新闻2'}]
   },
   subscriptions: {
     setup({ dispatch, history }) {

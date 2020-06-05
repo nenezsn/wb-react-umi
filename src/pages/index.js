@@ -1,31 +1,33 @@
-import Link from 'umi/link';
-import styles from './index.css';
-import { connect } from 'dva'
-import Com from '@/components'
-import { Button } from 'antd'
 
-function Index({foo,dispatch}) {
-    function update(){
-      dispatch({
-        type:'foo/fetch',
-        payload:{
-          a:2
-        }
-      })
-    }
-    console.log('process.env.TEST',process.env.TEST)
-  return (
-    <div className={styles.normal}>
-      <Com/>
-      <h1 onClick={update}>Page index</h1>
-     <Link to="/user">go to /users</Link>
-     <Button type='primary'>你好</Button>
-    </div>
-  );
-}
-const mapStateToProps = state =>{
-  return {
-    foo:state.foo
+import Link from 'umi/link';
+import styles from './index.less';
+import { Button } from 'antd'
+import React,{useEffect,useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+function App() {
+  const foo = useSelector(state=>state.foo)
+  const dispatch = useDispatch()
+
+  const ADD= function(){
+    dispatch({type:"foo/ADD"})
   }
+  const SUB= function(){
+    dispatch({type:"foo/SUB"})
+  }
+
+  useEffect(()=>{
+    dispatch({type:"foo/fetchUser"})
+  },[dispatch])
+
+  return <div className={styles.box}>
+    <h3>{foo.name}-{foo.age}-{foo.count}</h3>
+    <Button onClick={ADD}>加1</Button>
+    <Button onClick={SUB}>减1</Button>
+    <Button><Link to='/file/1'>文章1</Link></Button>
+    <Button><Link to='/file/2'>文章2</Link></Button>
+  </div>
 }
-export default connect(mapStateToProps)(Index)
+
+export default App
+
